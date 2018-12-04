@@ -16,7 +16,12 @@ console.log('Command: ', command);
 console.log('Yargs', argv);
 
 if (command === 'add') {
-  notes.addNote(argv.title, argv.body);
+  const note = notes.addNote(argv.title, argv.body);
+  if (_.isUndefined(note)) {
+    console.log('This note title is in use!')
+  } else {
+    console.log(`The note with title ${note.title} is added`)
+  }
 } else if (command === 'list') {
   notes.getAll();
 } else if (command === 'read') {
