@@ -1,7 +1,1 @@
-[
-  { "title": "secret", "body": "Some body here" },
-  { "title": "secret2", "body": "Some body here" },
-  { "title": "to buy", "body": "Food" },
-  { "title": "to buy 2", "body": "Food and coffee" },
-  { "title": "Travel destination", "body": "Iceland" }
-]
+[{"title":"secret","body":"Some body here"},{"title":"to buy","body":"Food"},{"title":"Travel destination","body":"Iceland"},{"title":"To go","body":"Japan"}]

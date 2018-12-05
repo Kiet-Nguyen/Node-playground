@@ -1,5 +1,3 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
 
 const fetchNotes = () => {
@@ -29,25 +27,41 @@ const addNote = (title, body) => {
     // Add new note to notes and turn it into a JSON string
     notes.push(note);
     saveNote(notes);
+
     return note;
   }
 };
 
 const getAll = () => {
-  console.log('Getting all notes');
+  return fetchNotes();
 };
 
 const getNote = title => {
-  console.log('Getting the note', title);
+  const notes = fetchNotes();
+  const selectedNotes = notes.filter(note => note.title === title);
+
+  return selectedNotes[0];
 };
 
 const deleteNote = title => {
-  console.log('Deleting note', title);
+  const notes = fetchNotes();
+  const updatedNotes = notes.filter(note => note.title !== title);
+  saveNote(updatedNotes);
+
+  return notes.length !== updatedNotes.length;
 };
+
+const logNote = note => {
+  console.log('--');
+  console.log(`Title: ${note.title}`);
+  console.log(`Body: ${note.body}`);
+  console.log('--');
+}
 
 module.exports = {
   addNote,
   getAll,
   getNote,
   deleteNote,
+  logNote,
 };
