@@ -1,10 +1,10 @@
-const fs = require('fs');
+const fs = require("fs");
 
 const fetchNotes = () => {
   // Prevent the app crash in case there is no notes-data.json file or the data inside this file is corrupted.
   try {
     // Avoid removing previous notes when add a new note
-    const notesString = fs.readFileSync('notes-data.json');
+    const notesString = fs.readFileSync("notes-data.json");
     return JSON.parse(notesString);
   } catch (error) {
     return [];
@@ -12,14 +12,14 @@ const fetchNotes = () => {
 };
 
 const saveNote = notes => {
-  fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+  fs.writeFileSync("notes-data.json", JSON.stringify(notes));
 };
 
 const addNote = (title, body) => {
   let notes = fetchNotes();
   const note = {
     title,
-    body,
+    body
   };
   // Prevent note with duplicate title
   const duplicateNotes = notes.filter(note => note.title === title);
@@ -52,16 +52,16 @@ const deleteNote = title => {
 };
 
 const logNote = note => {
-  console.log('--');
+  console.log("--");
   console.log(`Title: ${note.title}`);
   console.log(`Body: ${note.body}`);
-  console.log('--');
-}
+  console.log("--");
+};
 
 module.exports = {
   addNote,
   getAll,
   getNote,
   deleteNote,
-  logNote,
+  logNote
 };
